@@ -11,16 +11,6 @@ pipeline {
                 sh 'mvn package -DskipTests=true'
             }
         }
-        stage('UNIT-TEST') {
-            steps {
-                sh 'mvn test -Punit-test'
-            }
-        }
-        stage('DOCKER-BUILD') {
-            steps {
-                sh 'mvn package -DskipTests=true -Pproduction'
-            }
-        }
     }
 	post {
 	    always {
