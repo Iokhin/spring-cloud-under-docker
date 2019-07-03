@@ -13,12 +13,11 @@ pipeline {
         }
         stage('DOCKER-BUILD') {
             steps {
-                step('eureka-build') {
-                    sh 'docker build -t eureka ./task-manager-docker-eureka'
-                }
+                 sh 'docker build -t eureka ./task-manager-docker-eureka'
             }
         }
     }
+
 	post {
 	    always {
 	        archiveArtifacts artifacts: '**/*.jar',
