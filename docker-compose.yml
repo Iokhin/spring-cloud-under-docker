@@ -10,7 +10,7 @@ services:
         networks:
             - cloud
         ports:
-            - 8761:8761
+            - 9761:8761
 
     zuul:
         build: ./task-manager-docker-zuul
@@ -20,7 +20,7 @@ services:
         networks:
             - cloud
         ports:
-            - 8080:8080
+            - 9080:8080
         depends_on:
             - eureka
 
@@ -32,7 +32,7 @@ services:
         networks:
             - cloud
         ports:
-            - 8888:8888
+            - 9888:8888
         depends_on:
             - eureka
 
