@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+
+    eureka:
+        build: ./task-manager-docker-eureka
+        restart: always
+        environment:
+            eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+        networks:
+            - cloud
+        ports:
+            - 8761:8761
+
+    zuul:
+        build: ./task-manager-docker-zuul
+        restart: always
+        environment:
+            eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+        networks:
+            - cloud
+        ports:
+            - 8080:8080
+        depends_on:
+            - eureka
+
+    config:
+        build: ./task-manager-docker-config
+        restart: always
+        environment:
+            eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+        networks:
+            - cloud
+        ports:
+            - 8888:8888
+        depends_on:
+            - eureka
+
+    postgresql:
+        image: postgres:9.6
+        restart: always
+        networks:
+            - cloud
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+            POSTGRES_DATABASE: tm
+        volumes:
+            - ./data/postgres:/var/lib/postgresql/data
+
+networks:
+    cloud:
+        driver: bridge
