@@ -13,7 +13,7 @@ pipeline {
         }
         stage('DOCKER-BUILD') {
             steps {
-                 sh 'docker build -t eureka ./task-manager-docker-eureka'
+                 sh 'docker compose up'
             }
         }
     }
