@@ -11,12 +11,12 @@ pipeline {
                 sh 'mvn package -DskipTests=true'
             }
         }
-        stage('DOCKER-BUILD') {
-            steps {
-                 sh 'docker-compose down'
-                 sh 'docker-compose up -d'
-            }
-        }
+//        stage('DOCKER-BUILD') {
+//            steps {
+//                 sh 'docker-compose down'
+//                 sh 'docker-compose up -d'
+//            }
+//        }
     }
 
 	post {

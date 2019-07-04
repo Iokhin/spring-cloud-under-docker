@@ -12,6 +12,7 @@
         <module>task-manager-docker-eureka</module>
         <module>task-manager-docker-zuul</module>
         <module>task-manager-docker-config</module>
+        <module>task-manager-frontend-sencha</module>
     </modules>
 
     <properties>

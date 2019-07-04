@@ -17,6 +17,9 @@ services:
         restart: always
         environment:
             eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+            zuul.routes.front.path: /sencha/**
+            zuul.routes.front.url: http://sencha:8080
+            zuul.routes.front.serviceId: app-tm-front-sencha
         networks:
             - cloud
         ports:
@@ -35,6 +38,18 @@ services:
             - 9888:8888
         depends_on:
             - eureka
+
+    sencha:
+        build: ./task-manager-frontend-sencha
+        restart: always
+        environment:
+            eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/
+        networks:
+          - cloud
+#        ports:
+#          - 1432:8080
+        depends_on:
+          - eureka
 
     postgresql:
         image: postgres:9.6
