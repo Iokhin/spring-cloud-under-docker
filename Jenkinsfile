@@ -22,13 +22,13 @@ pipeline {
             steps {
                  sh 'docker stop eureka || true'
                  sh 'docker rm eureka || true'
-                 sh 'docker run --name eureka run -d task-manager/eureka'
+                 sh 'docker run -d --name eureka task-manager/eureka'
                  sh 'docker stop zuul || true'
                  sh 'docker rm zuul || true'
-                 sh 'docker run --name zuul run -d task-manager/zuul'
+                 sh 'docker run -d --name zuul task-manager/zuul'
                  sh 'docker stop config || true'
                  sh 'docker rm config || true'
-                 sh 'docker run --name zuul run -d task-manager/config'
+                 sh 'docker run -d --name config  task-manager/config'
             }
         }
     }
