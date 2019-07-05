@@ -13,9 +13,9 @@ pipeline {
         }
         stage('DOCKER-BUILD') {
             steps {
-                 sh 'docker build -t task-manager/eureka ./task-manager-docker-eureka
-                 sh 'docker build -t task-manager/zuul ./task-manager-docker-zuul
-                 sh 'docker build -t task-manager/config ./task-manager-docker-config
+                 sh 'docker build -t task-manager/eureka ./task-manager-docker-eureka'
+                 sh 'docker build -t task-manager/zuul ./task-manager-docker-zuul'
+                 sh 'docker build -t task-manager/config ./task-manager-docker-config'
             }
         }
         stage('DOCKER-RUN') {
